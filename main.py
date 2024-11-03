@@ -93,8 +93,8 @@ def ui():
             words = syno(keyword)
             available = len(words)
 
-            console.print(f"[green]Yay, over {available} usernames were found![/green]")
-            customize = console.input("[yellow]--> Want to customize it? (y/n): [/yellow]").lower()
+            console.print(f"[green]Yay, over {available} words found![/green]")
+            customize = console.input("[yellow]Want to customize it? (y/n): [/yellow]").lower()
 
             if customize == 'y':
                 user = int(console.input(f"[yellow]--> How many usernames do you want (max {available}): [/yellow]"))
@@ -187,21 +187,24 @@ def gen(type, numbers, user, length, save, valid, delay, save_file, keyword=None
                 elif not valid:
                     console.print(f"[{int(percentage)}%]    {Username:<15} | [red]Unavailable[/red]")
             time.sleep(delay)
-
-    elif type == 2:
-        for i in range(user):
-            Username = random.choice(syno(keyword))
-            Code = checker(Username)
-            percentage = ((i + 1) / user) * 100
             
-            if Code is not None:
-                if Code == 0:
-                    found += 1
-                    console.print(f"[{int(percentage)}%]    {Username:<15} | [green]Available[/green]")
-                    OK(Username, found, user, save_file if save else None)
-                elif not valid:
-                    console.print(f"[{int(percentage)}%]    {Username:<15} | [red]Unavailable[/red]")
-            time.sleep(delay)
+    elif type == 2:
+     for i in range(user):
+        Username = random.choice(syno(keyword))
+        if numbers:
+            Username = replace(Username)
+        Code = checker(Username)
+        percentage = ((i + 1) / user) * 100
+        
+        if Code is not None:
+            if Code == 0:
+                found += 1
+                console.print(f"[{int(percentage)}%]    {Username:<15} | [green]Available[/green]")
+                OK(Username, found, user, save_file if save else None)
+            elif not valid:
+                console.print(f"[{int(percentage)}%]    {Username:<15} | [red]Unavailable[/red]")
+        time.sleep(delay)
+
 
     elif type == 3:
         for i in range(user):
