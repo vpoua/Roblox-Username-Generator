@@ -24,4 +24,6 @@ You can install the required packages using pip:
 ```bash
 pip install requests rich faker
 ```
+
+# DEMO: Prompt = retarded
 ![image](https://github.com/user-attachments/assets/87b92a50-5983-44f3-803b-f61f691c42fe)
