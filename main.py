@@ -93,8 +93,8 @@ def ui():
             words = syno(keyword)
             available = len(words)
 
-            console.print(f"[green]Yay, over {available} words found![/green]")
-            customize = console.input("[yellow]Want to customize it? (y/n): [/yellow]").lower()
+            console.print(f"[green]Yay, over {available} usernames were found![/green]")
+            customize = console.input("[yellow]--> Want to customize it? (y/n): [/yellow]").lower()
 
             if customize == 'y':
                 user = int(console.input(f"[yellow]--> How many usernames do you want (max {available}): [/yellow]"))
